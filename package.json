@@ -39,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js"
+    }
   }
 }
