@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import "twin.macro";
+import React, { useState } from "react";
+import tw, { styled } from "twin.macro";
+// import useState from React
 
 function DemoTestimonial() {
   return (
@@ -29,8 +31,37 @@ function DemoTestimonial() {
 }
 
 function App() {
+  const AppButton = () => <button tw="bg-blue-200"> Click Me </button>;
+  const ConditionalInput = ({ hasError }) => (
+    <input css={[tw`border p-4`, hasError && tw`border-red-700`]} />
+  );
+
+  const PrimaryButton = tw.button`bg-blue-800 text-white px-6 py-2 m-6 rounded-md hover:bg-blue-600`;
+  const OtherButton = tw(PrimaryButton)`bg-purple-600 hover:bg-purple-200`;
+
+  const [errorPresent, setErrorPresent] = useState(true);
   return (
     <div>
+      <button tw="bg-blue-600 text-white p-3 hover:bg-blue-400 hover:text-gray-300">
+        {" "}
+        Call to Action{" "}
+      </button>
+      <br></br>
+      <div tw="m-3 flex flex-col">
+        <ConditionalInput hasError={errorPresent} />
+        <button
+          tw="bg-green-500 mt-3 p-2 text-white "
+          onClick={() => setErrorPresent(!errorPresent)}
+        >
+          {" "}
+          Toggle Error Present
+        </button>
+      </div>
+      <AppButton />
+      <PrimaryButton> Primary Button</PrimaryButton>
+      <OtherButton> Other Button</OtherButton>
+      {/* <Input /> */}
+      {/* </div> */}
       <DemoTestimonial />
     </div>
   );
